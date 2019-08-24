@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1024.0" prefHeight="720.0" prefWidth="1024.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1024.0" prefHeight="720.0" prefWidth="1024.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UIController">
    <right>
       <VBox minHeight="700.0" minWidth="400.0" prefHeight="700.0" prefWidth="400.0" style="-fx-background-color: Silver;" BorderPane.alignment="CENTER">
          <children>
@@ -20,7 +20,7 @@
                <children>
                   <HBox alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="400.0" snapToPixel="false" style="-fx-border-color: Lime;" text="SINGLE BACKGROUND" />
+                        <Button fx:id="ButtonSingle" mnemonicParsing="false" prefWidth="400.0" snapToPixel="false" style="-fx-border-color: Lime;" text="SINGLE BACKGROUND" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -28,7 +28,7 @@
                   </HBox>
                   <HBox alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="400.0" text="MULTIPLE BACKGROUNDS" />
+                        <Button fx:id="ButtonMultiple" mnemonicParsing="false" prefWidth="400.0" text="MULTIPLE BACKGROUNDS" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -43,7 +43,7 @@
                <children>
                   <HBox>
                      <children>
-                        <TextField prefWidth="400.0" text="E:\Images\Divinity\" />
+                        <TextField fx:id="TextFieldChoiceLocation" prefWidth="400.0" text="E:\Images\Divinity\" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -58,7 +58,7 @@
                <children>
                   <HBox>
                      <children>
-                        <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="400.0" text="BROWSE..." fx:id="x" />
+                        <Button fx:id="ButtonBrowseChoiceLocation" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="400.0" text="BROWSE..." />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -81,7 +81,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0">
                      <children>
-                        <ChoiceBox fx:id="ChoiceBoxResolution" prefWidth="400.0" />
+                        <ChoiceBox fx:id="ChoiceBoxTargetResolution" prefWidth="400.0" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -104,9 +104,9 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0" spacing="5.0">
                      <children>
-                        <TextField alignment="CENTER" promptText="Width" />
-                        <TextField alignment="CENTER" disable="true" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="25.0" text="X" />
-                        <TextField alignment="CENTER" promptText="Height" />
+                        <TextField fx:id="TextFieldCustomWidth" alignment="CENTER" promptText="Width" />
+                        <TextField fx:id="TextField" alignment="CENTER" disable="true" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="25.0" text="X" />
+                        <TextField fx:id="TextFieldCustomHeight" alignment="CENTER" promptText="Height" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -129,7 +129,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="400.0" style="-fx-border-color: Lime;" text="✔" fx:id="x1" />
+                        <Button fx:id="ButtonLoselessResolution" mnemonicParsing="false" prefWidth="400.0" style="-fx-border-color: Lime;" text="✔" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -152,7 +152,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0">
                      <children>
-                        <ChoiceBox fx:id="ChoiceBoxResolution1" prefWidth="400.0" />
+                        <ChoiceBox fx:id="ChoiceBoxBlackBarPlacement" prefWidth="400.0" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -178,8 +178,8 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                      <children>
-                        <TextField alignment="CENTER" disable="true" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="45.0" text="100%" />
-                        <Slider maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minorTickCount="0" showTickLabels="true" />
+                        <TextField fx:id="TextFieldBlackBarHeight" alignment="CENTER" disable="true" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="45.0" text="100%" />
+                        <Slider fx:id="SliderBlackBarHeight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minorTickCount="0" showTickLabels="true" />
                      </children>
                   </HBox>
                </children>
@@ -202,8 +202,8 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                      <children>
-                        <TextField alignment="CENTER" disable="true" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="45.0" text="100%" />
-                        <Slider maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minorTickCount="0" showTickLabels="true" />
+                        <TextField fx:id="TextFieldBackgroundOpacity" alignment="CENTER" disable="true" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="45.0" text="100%" />
+                        <Slider fx:id="SliderBackgroundOpacity" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minorTickCount="0" showTickLabels="true" />
                      </children>
                   </HBox>
                </children>
@@ -215,7 +215,7 @@
                <children>
                   <HBox>
                      <children>
-                        <TextField prefWidth="390.0" text="C:\Programming\Programs\My Work\Background Creator\Created Backgrounds" />
+                        <TextField fx:id="TextFieldCreatedLocation" prefWidth="390.0" text="C:\Programming\Programs\My Work\Background Creator\Created Backgrounds" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -230,7 +230,7 @@
                <children>
                   <HBox>
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="400.0" text="BROWSE..." fx:id="x2" />
+                        <Button fx:id="ButtonBrowseCreatedLocation" mnemonicParsing="false" prefWidth="400.0" text="BROWSE..." />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -238,7 +238,7 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="400.0" text="OPEN" fx:id="x21" />
+                        <Button fx:id="ButtonOpenCreatedLocation" mnemonicParsing="false" prefWidth="400.0" text="OPEN" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -253,7 +253,7 @@
                <children>
                   <HBox prefWidth="400.0">
                      <children>
-                        <TextArea editable="false" prefHeight="200.0" prefWidth="400.0">
+                        <TextArea fx:id="TextAreaLog" editable="false" prefHeight="200.0" prefWidth="400.0">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -272,7 +272,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefWidth="400.0">
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="400.0" text="CREATE" fx:id="x3">
+                        <Button fx:id="ButtonCreate" mnemonicParsing="false" prefWidth="400.0" text="CREATE">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -291,6 +291,6 @@
       </VBox>
    </right>
    <center>
-      <ImageView fitHeight="720.0" fitWidth="624.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+      <ImageView fx:id="ImageViewMain" fitHeight="720.0" fitWidth="624.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
