@@ -67,8 +67,15 @@ public class UIController implements Initializable
 	 * @author Marko S. Bachynsky
 	 * @since 1.0
 	 */
+	
 	public Boolean				SingleOrMultiple;
 	
+	/**
+	 * ButtonSingle on action event.
+	 * When selected, update selection color, and SingleOrMultiple boolean.
+	 * @author Marko S. Bachynsky
+	 * @since 1.0
+	 */
 	
 	public void OnActionButtonSingle(ActionEvent event)
 	{
@@ -80,6 +87,13 @@ public class UIController implements Initializable
 		}
 
 	}
+	
+	/**
+	 * ButtonMultiple on action event.
+	 * When selected, update selection color, and SingleOrMultiple boolean.
+	 * @author Marko S. Bachynsky
+	 * @since 1.0
+	 */
 	
 	public void OnActionButtonMultiple(ActionEvent event)
 	{

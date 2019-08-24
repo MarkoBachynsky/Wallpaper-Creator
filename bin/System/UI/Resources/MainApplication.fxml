@@ -215,7 +215,7 @@
                <children>
                   <HBox>
                      <children>
-                        <TextField fx:id="TextFieldCreatedLocation" prefWidth="390.0" text="C:\Programming\Programs\My Work\Background Creator\Created Backgrounds" />
+                        <TextField fx:id="TextFieldCreatedLocation" prefWidth="390.0" promptText="C:\Images\New Wallpapers..." />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
