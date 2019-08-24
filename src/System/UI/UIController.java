@@ -1,6 +1,10 @@
 package System.UI;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
@@ -9,13 +13,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 /**
- * The UI Controller class responsible for functionality to the User Interface.
+ * The UI Controller Class responsible for functionality to the User Interface.
  * 
  * @author Marko S. Bachynsky
  * @since 1.0
  */
 
-public class UIController
+public class UIController implements Initializable
 {
 	@FXML
 	public ImageView			ImageViewMain;
@@ -55,5 +59,67 @@ public class UIController
 	public TextArea				TextAreaLog;
 	@FXML
 	public Button				ButtonCreate;
+	
+	
+	/**
+	 * Boolean to keep track of which setting is selected. Single or multiple images.
+	 * False is single, true is multiple.
+	 * @author Marko S. Bachynsky
+	 * @since 1.0
+	 */
+	public Boolean				SingleOrMultiple;
+	
+	
+	public void OnActionButtonSingle(ActionEvent event)
+	{
+		if (SingleOrMultiple == true) // If ButtonSingle is not currently selected 
+		{
+			ButtonSingle.setStyle("-fx-border-color: Lime");
+			ButtonMultiple.setStyle(null);
+			SingleOrMultiple = false;
+		}
+
+	}
+	
+	public void OnActionButtonMultiple(ActionEvent event)
+	{
+
+		if (SingleOrMultiple == false) // If ButtonMultiple is not currently selected 
+		{
+			ButtonMultiple.setStyle("-fx-border-color: Lime");
+			ButtonSingle.setStyle(null);
+			SingleOrMultiple = true;
+		}
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		SingleOrMultiple = false;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

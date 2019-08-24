@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1024.0" prefHeight="720.0" prefWidth="1024.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UIController">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="720.0" minWidth="1024.0" prefHeight="720.0" prefWidth="1024.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="System.UI.UIController">
    <right>
       <VBox minHeight="700.0" minWidth="400.0" prefHeight="700.0" prefWidth="400.0" style="-fx-background-color: Silver;" BorderPane.alignment="CENTER">
          <children>
@@ -20,7 +20,7 @@
                <children>
                   <HBox alignment="CENTER">
                      <children>
-                        <Button fx:id="ButtonSingle" mnemonicParsing="false" prefWidth="400.0" snapToPixel="false" style="-fx-border-color: Lime;" text="SINGLE BACKGROUND" />
+                        <Button fx:id="ButtonSingle" mnemonicParsing="false" onAction="#OnActionButtonSingle" prefWidth="400.0" snapToPixel="false" style="-fx-border-color: Lime;" text="SINGLE BACKGROUND" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -28,7 +28,7 @@
                   </HBox>
                   <HBox alignment="CENTER">
                      <children>
-                        <Button fx:id="ButtonMultiple" mnemonicParsing="false" prefWidth="400.0" text="MULTIPLE BACKGROUNDS" />
+                        <Button fx:id="ButtonMultiple" mnemonicParsing="false" onAction="#OnActionButtonMultiple" prefWidth="400.0" text="MULTIPLE BACKGROUNDS" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -43,7 +43,7 @@
                <children>
                   <HBox>
                      <children>
-                        <TextField fx:id="TextFieldChoiceLocation" prefWidth="400.0" text="E:\Images\Divinity\" />
+                        <TextField fx:id="TextFieldChoiceLocation" prefWidth="400.0" promptText="C:\Images\..." />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -104,9 +104,9 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="200.0" spacing="5.0">
                      <children>
-                        <TextField fx:id="TextFieldCustomWidth" alignment="CENTER" promptText="Width" />
+                        <TextField fx:id="TextFieldCustomWidth" alignment="CENTER" promptText="Width..." />
                         <TextField fx:id="TextField" alignment="CENTER" disable="true" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="25.0" text="X" />
-                        <TextField fx:id="TextFieldCustomHeight" alignment="CENTER" promptText="Height" />
+                        <TextField fx:id="TextFieldCustomHeight" alignment="CENTER" promptText="Height..." />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -215,7 +215,7 @@
                <children>
                   <HBox>
                      <children>
-                        <TextField fx:id="TextFieldCreatedLocation" prefWidth="390.0" text="C:\Programming\Programs\My Work\Background Creator\Created Backgrounds" />
+                        <TextField fx:id="TextFieldCreatedLocation" prefWidth="390.0" promptText="C:\Images\New Wallpapers..." />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
