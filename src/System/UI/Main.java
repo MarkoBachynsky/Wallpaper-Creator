@@ -30,6 +30,7 @@ public class Main extends Application
 			// Main Program
 			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/System/UI/Resources/MainApplication.fxml"));
 			Scene scene = new Scene(root);
+			primaryStage.setTitle("Wallpaper Creator");
 			scene.getStylesheets().add(getClass().getResource("/System/UI/Resources/Application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
