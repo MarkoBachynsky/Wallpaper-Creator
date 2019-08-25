@@ -15,6 +15,10 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 
 /**
  * The UI Controller Class responsible for functionality to the User Interface.
@@ -25,6 +29,9 @@ import javafx.scene.image.ImageView;
 
 public class UIController implements Initializable
 {
+	public Stage				StageMain;
+	@FXML
+	public BorderPane			BorderPaneMain;
 	@FXML
 	public ImageView			ImageViewMain;
 	@FXML
@@ -131,7 +138,12 @@ public class UIController implements Initializable
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
+		//StageMain = (Stage) BorderPaneMain.getScene().getWindow();
+		
 		CreateSingleOrMultiple = false;
+		
+		
+		
 		
 		TextFieldChoiceLocation.textProperty().addListener(new ChangeListener<String>()
 		{
@@ -178,6 +190,29 @@ public class UIController implements Initializable
 		}
 
 	}
+	
+	
+	/**
+	 * On Action Event that allows the user to select a file or directory.
+	 * @author Marko S. Bachynsky
+	 * @since 1.0
+	 */
+	public void OnActionButtonBrowseChoiceLocation(ActionEvent event)
+	{
+		 FileChooser fileChooser = new FileChooser();
+		 fileChooser.setTitle("Open Resource File");
+		 fileChooser.getExtensionFilters().addAll(
+		         new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif"),
+		         new ExtensionFilter("All Files", "*.*"));
+		 File selectedFile = fileChooser.showOpenDialog(StageMain);
+		 if (selectedFile != null) {
+			 String selectedFilePath = selectedFile.getPath();
+			 TextFieldChoiceLocation.setText(selectedFilePath);
+		 }
+
+	}
+	
+	
 }
 
 

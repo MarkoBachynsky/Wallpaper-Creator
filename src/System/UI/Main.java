@@ -2,8 +2,8 @@ package System.UI;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
 
 /**
@@ -17,7 +17,7 @@ public class Main extends Application
 
 	/**
 	 * 
-	 * Creates main program with a untitled window
+	 * Creates main program.
 	 * 
 	 * @since 1.0
 	 * @author Marko S. Bachynsky
@@ -27,8 +27,10 @@ public class Main extends Application
 	{
 		try
 		{
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/System/UI/Resources/MainApplication.fxml"));
+			Parent root = (Parent) loader.load();
+			
 			// Main Program
-			BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/System/UI/Resources/MainApplication.fxml"));
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Wallpaper Creator");
 			scene.getStylesheets().add(getClass().getResource("/System/UI/Resources/Application.css").toExternalForm());
