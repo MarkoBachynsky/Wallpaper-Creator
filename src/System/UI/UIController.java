@@ -1,7 +1,11 @@
 package System.UI;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,9 +28,9 @@ public class UIController implements Initializable
 	@FXML
 	public ImageView			ImageViewMain;
 	@FXML
-	public Button				ButtonSingle;
+	public Button				ButtonCreateSingle;
 	@FXML
-	public Button				ButtonMultiple;
+	public Button				ButtonCreateMultiple;
 	@FXML
 	public TextField			TextFieldChoiceLocation;
 	@FXML
@@ -60,7 +64,6 @@ public class UIController implements Initializable
 	@FXML
 	public Button				ButtonCreate;
 	
-	
 	/**
 	 * Boolean to keep track of which setting is selected. Single or multiple images.
 	 * False is single, true is multiple.
@@ -68,72 +71,126 @@ public class UIController implements Initializable
 	 * @since 1.0
 	 */
 	
-	public Boolean				SingleOrMultiple;
+	public Boolean				CreateSingleOrMultiple;
 	
 	/**
-	 * ButtonSingle on action event.
-	 * When selected, update selection color, and SingleOrMultiple boolean.
+	 * ButtonCreateSingle on action event.
+	 * When selected, update selection color, and CreateSingleOrMultiple boolean.
 	 * @author Marko S. Bachynsky
 	 * @since 1.0
 	 */
 	
-	public void OnActionButtonSingle(ActionEvent event)
+	public void OnActionButtonCreateSingle(ActionEvent event)
 	{
-		if (SingleOrMultiple == true) // If ButtonSingle is not currently selected 
+		if (CreateSingleOrMultiple == true) // If ButtonCreateSingle is not currently selected 
 		{
-			ButtonSingle.setStyle("-fx-border-color: Lime");
-			ButtonMultiple.setStyle(null);
-			SingleOrMultiple = false;
+			ButtonCreateSingle.setStyle("-fx-border-color: Lime");
+			ButtonCreateMultiple.setStyle(null);
+			CreateSingleOrMultiple = false;
+			EnableOrDisableButtonCreate();
 		}
 
 	}
 	
 	/**
-	 * ButtonMultiple on action event.
-	 * When selected, update selection color, and SingleOrMultiple boolean.
+	 * ButtonCreateMultiple on action event.
+	 * When selected, update selection color, and CreateSingleOrMultiple boolean.
 	 * @author Marko S. Bachynsky
 	 * @since 1.0
 	 */
 	
-	public void OnActionButtonMultiple(ActionEvent event)
+	public void OnActionButtonCreateMultiple(ActionEvent event)
 	{
 
-		if (SingleOrMultiple == false) // If ButtonMultiple is not currently selected 
+		if (CreateSingleOrMultiple == false) // If ButtonCreateMultiple is not currently selected 
 		{
-			ButtonMultiple.setStyle("-fx-border-color: Lime");
-			ButtonSingle.setStyle(null);
-			SingleOrMultiple = true;
+            try
+            {
+            	TextFieldChoiceLocation.setText(TextFieldChoiceLocation.getText().substring(0, TextFieldChoiceLocation.getText().lastIndexOf("\\")) + "\\");
+            } catch (Exception error)
+            {
+                System.out.println(error);
+            }
+			
+			ButtonCreateMultiple.setStyle("-fx-border-color: Lime");
+			ButtonCreateSingle.setStyle(null);
+			CreateSingleOrMultiple = true;
+			EnableOrDisableButtonCreate();
+			
+			
 		}
 	}
 
+	
+	/**
+	 * Initialize event. Initializes variables, and events for GUI elements.
+	 * TextFieldChoiceLocation Text Changed event runs EnableOrDisableButtonCreate()
+	 * @author Marko S. Bachynsky
+	 * @since 1.0
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
-		SingleOrMultiple = false;
+		CreateSingleOrMultiple = false;
+		
+		TextFieldChoiceLocation.textProperty().addListener(new ChangeListener<String>()
+		{
+		    @Override
+		    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
+		    {
+		    	EnableOrDisableButtonCreate();
+		    }
+		});
+		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/**
+	 * Checks user input to enable or disable the create image button.
+	 * @author Marko S. Bachynsky
+	 * @since 1.0
+	 */
+	public void EnableOrDisableButtonCreate()
+	{
+		if (CreateSingleOrMultiple == false) // If Create Single Is Selected
+		{
+			if (((File) new File(TextFieldChoiceLocation.getText())) .isFile()) // if the file does exist, enable Create Image Button
+				ButtonCreate.setDisable(false);
+			else
+				ButtonCreate.setDisable(true);
+		} else if (CreateSingleOrMultiple == true) // If Create Multiple Is Selected
+		{
+			if (((File) new File(TextFieldChoiceLocation.getText())) .isDirectory()) // if the directory does exist, enable Create Image Button
+				ButtonCreate.setDisable(false);
+			else
+				ButtonCreate.setDisable(true);
+		}
+		
+		
+		try
+		{
+	        if (Integer.parseInt(TextFieldCustomWidth.getText()) <= 0 || Integer.parseInt(TextFieldCustomHeight.getText()) <= 0) // If either custom resolution inputs are less than 1
+				ButtonCreate.setDisable(false); // If inputs are good, stay enabled
+			else
+				ButtonCreate.setDisable(true); // If inputs are bad, disable button
+		} catch (NumberFormatException Exception)
+		{
+			// This exception is expected, and doesn't need to be handled further.
+		}
+
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
